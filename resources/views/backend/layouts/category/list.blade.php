@@ -16,27 +16,20 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Product Name</th>
       <th scope="col">Category Name</th>
-      <th scope="col">Price</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
 
-@foreach($products as $key=>$singleProduct)
-
-
+@foreach($categories as $key=>$category)
     <tr>
       <th scope="row">{{$key+1}}</th>
-      <td>{{$singleProduct->name}}</td>
-      <td>{{$singleProduct->category->name}}</td>
-      <td>{{$singleProduct->price}}</td>
-      <td>{{$singleProduct->status}}</td>
+      <td>{{$category->name}}</td>
+      <td>{{$category->status}}</td>
       <td>
-      	<a href="" class="btn btn-primary">view {{$singleProduct->id}}</a>
-
+      	<a href="" class="btn btn-primary">view {{$category->id}}</a>
       </td>
     </tr>
 
@@ -45,7 +38,7 @@
 
   </tbody>
     </table>
-    {{$products->links()}}
+    {{$categories->links()}}
 
 </div>
 
@@ -67,15 +60,6 @@
 
           <form action="{{route('product.create')}}" method="POST" role="form">
               @csrf
-              <div class="form-group">
-              <label for="product">Select  Category</label>
-                  <select class=" form-control" name="category_id" id="">
-                      @foreach($categories as $category)
-                      <option value="{{$category->id}}">{{$category->name}}</option>
-                          @endforeach
-                  </select>
-              </div>
-
               <div class="form-group">
               <label for="product">Product Name</label>
               <input required id="product" name="product_name" type="text" class="form-control" placeholder="Please Enter product name">

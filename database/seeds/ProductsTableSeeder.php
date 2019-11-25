@@ -14,6 +14,7 @@ class ProductsTableSeeder extends Seeder
     {
         Products::create([
         	'name'=>'maliha',
+        	'category_id'=>1,
         	'price'=>201.00	,
         ]);
     }

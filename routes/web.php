@@ -12,6 +12,6 @@
 */
 
 Route::get('/','HomeController@welcome')->name('home');
-Route::get('/about','HomeController@about')->name('about');
+Route::get('/category','CategoryController@list')->name('category');
 Route::get('/product','ProductController@list')->name('product.list');
 Route::post('/product/create','ProductController@create')->name('product.create');
