@@ -36,4 +36,32 @@ class ProductController extends Controller
 
     }
 
+
+    public function view($id)
+    {
+        $product=Products::find($id);
+        // Products::where('id',$id)->first();
+//        dd($product);
+        return view('backend.layouts.product.view',compact('product'));
+
+
+    }
+
+    public function update(Request $request,$id)
+    {
+       Products::where('id',$id)->update([
+          'name'=>$request->name,
+          'price'=>$request->price,
+       ]);
+
+       return redirect()->route('product.list')->with('message','Product Updated Successfully');
+    }
+
+    public function delete($id)
+    {
+        Products::find($id)->delete();
+        return redirect()->route('product.list')->with('message','Product deleted Successfully');
+
+    }
+
 }
