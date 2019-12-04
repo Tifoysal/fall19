@@ -41,7 +41,17 @@
         @if(Session::has('message'))
             <p class="alert-success">{{Session::get('message')}}</p>
             @endif
-        <form action="{{route('do.registration')}}" role="form" method="POST" class="form-signin">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        <form enctype="multipart/form-data" action="{{route('do.registration')}}" role="form" method="POST" class="form-signin">
             @csrf
 
             <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
@@ -59,6 +69,9 @@
                 <label for="inputPassword" class="">Password</label>
                 <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
                        required>
+            </div>
+            <div class="col-md-6">
+                <input type="file" name="image" class="form-control">
             </div>
             <div class="checkbox mb-3">
                 <label>

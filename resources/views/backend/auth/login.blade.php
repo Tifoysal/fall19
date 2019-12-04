@@ -41,7 +41,18 @@
         @if(Session::has('message'))
             <p class="alert-danger">{{Session::get('message')}}</p>
         @endif
-        <form action="{{route('do.login')}}" role="form" method="POST" class="form-signin">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{route('do.login')}}" role="form" method="POST" class="form-signin">
             @csrf
             <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

@@ -4,7 +4,9 @@
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
 {{--      <a class="nav-link" href="#"></a>--}}
+
       <a class="nav-link" href="{{route('logout')}}">Sign out</a>
+        <img src="{{url('/user/customer').'/'.auth()->user()->image}}" alt="user image" style="height: 20px;width: 20px;">
     </li>
   </ul>
 </nav>

@@ -15,12 +15,14 @@
             </a>
           </li>
 
+            @if(auth()->user()->type=='admin')
           <li class="nav-item">
             <a class="nav-link {{ request()->is('product') ? ' active' : '' }}" href="{{route('product.list')}}">
               <span data-feather="shopping-cart"></span>
               Products
             </a>
           </li>
+            @endif
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="users"></span>
